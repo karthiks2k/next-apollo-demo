@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nodejs-server:
+    build:
+      context: ./api
+    ports:
+      - "3000:3000"
+    volumes:
+       - ./api:/usr/src/app/api
+       - /usr/src/app/api/node_modules
+  react-ui:
+    build:
+      context: ./contact-app
+    ports:
+      - "4000:4000"
+    stdin_open: true
+    volumes:
+       - ./app:/usr/src/app/contact-app
+       - /usr/src/app/contact-app/node_modules
